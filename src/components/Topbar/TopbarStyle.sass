@@ -1,0 +1,42 @@
+.topbar
+    background-color: #1E5128
+    width: 100vw
+    height: 3rem
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+    a
+        font-size: 1.5rem
+        font-weight: 500
+        color: white
+    
+    form
+        display: flex
+        align-items: center
+
+    input, button
+        height: 2rem
+
+    input
+        border-top-left-radius: 1.5rem
+        border-bottom-left-radius: 1.5rem
+        padding: 10px 15px
+        width: 10rem
+        text-transform: lowercase
+
+        &::placeholder
+            color: #191A19
+
+    button
+        border-top-right-radius: 1.5rem
+        border-bottom-right-radius: 1.5rem
+        background: white
+        padding-right: 2rem
+        padding-top: .4rem
+        cursor: pointer
+
+    svg
+        &:hover
+            transform: scale(1.2)
+            transition: all .8 ease

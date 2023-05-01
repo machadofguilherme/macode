@@ -1,12 +1,7 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const { API_URI } = process.env;
 
 const request = axios.create({
-  baseURL: API_URI,
+  baseURL: import.meta.env.VITE_API_URI,
 });
 
 const loginRequest = async (endpoint, body) => {
