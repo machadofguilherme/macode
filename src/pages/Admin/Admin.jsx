@@ -4,22 +4,34 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormPost from "../../components/FormPost/FormPost";
 import PostList from "../../components/PostList/PostList";
+import dataRequest from "../../utils/fetchApi";
 
 const Admin = () => {
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
+  
 
   useEffect(() => {
     const admin = JSON
     .parse(localStorage.getItem('admin'));
   
     if (!admin) { navigate('/login') }
+  }, [navigate]);
 
-    try {
-      console.log(admin.token);
-    } catch (error) {
-      console.log('erro');
+  useEffect(() => {
+    const token = JSON
+      .parse(localStorage.getItem('admin')).token;
+
+    const requestProcess = async (token) => {
+      try {
+        await dataRequest('/check', { token });
+      } catch (error) {
+        localStorage.clear();
+        navigate('/login');
+      }
     }
+
+    requestProcess(token);
   }, [navigate]);
 
   return (

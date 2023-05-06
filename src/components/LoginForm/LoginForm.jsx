@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoginSchema from '../../schemas/LoginSchema';
-import loginRequest from '../../utils/fetchApi';
+import dataRequest from '../../utils/fetchApi';
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -13,7 +13,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const response = await loginRequest('/login', {
+    const response = await dataRequest('/login', {
       email: data.email,
       password: data.password,
     });
