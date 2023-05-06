@@ -5,11 +5,13 @@ import Button from "../../components/Button/Button";
 import FormPost from "../../components/FormPost/FormPost";
 import PostList from "../../components/PostList/PostList";
 import dataRequest from "../../utils/fetchApi";
+import './AdminStyle.sass';
 
 const Admin = () => {
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
-  
+  const [isLogout, setIsLogout] = useState(false);
+
 
   useEffect(() => {
     const admin = JSON
@@ -34,15 +36,30 @@ const Admin = () => {
     requestProcess(token);
   }, [navigate]);
 
+  useEffect(() => {
+    if (isLogout) {
+      localStorage.clear();
+      navigate('/login');
+    }
+  }, [isLogout, navigate]);
+
   return (
     <>
-      <Button
-        text={ !isEdit ? 'Nova postagem' : 'Cancelar' }
-        choose={ setIsEdit }
-        chooseValue={ isEdit }
-      />
+      <section
+        className="header__admin-container"
+      >
+        <Button
+          text={ !isEdit ? 'Nova postagem' : 'Cancelar' }
+          choose={ setIsEdit }
+          chooseValue={ isEdit }
+        />
 
-      <Button text='Sair' />
+        <Button
+          text='Sair'
+          choose={ setIsLogout }
+          chooseValue={ isLogout }
+        />
+      </section>
 
       {
         isEdit

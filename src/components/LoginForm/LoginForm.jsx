@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoginSchema from '../../schemas/LoginSchema';
 import dataRequest from '../../utils/fetchApi';
+import './LoginFormStyle.sass';
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -29,18 +30,23 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <section>
-        <input type='email' placeholder="E-Mail" {...register('email')} />
-        <p>{errors.email?.message}</p>
-      </section>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className='form__container'
+    >
+      <div>
+        <section>
+          <input type='email' placeholder="E-Mail" {...register('email')} />
+          <p>{errors.email?.message}</p>
+        </section>
 
-      <section>
-        <input type='password' placeholder="Senha" {...register('password')} />
-        <p>{errors.password?.message}</p>
-      </section>
+        <section>
+          <input type='password' placeholder="Senha" {...register('password')} />
+          <p>{errors.password?.message}</p>
+        </section>
 
-      <button type="submit">Entrar</button>
+        <button type="submit">Entrar</button>
+      </div>
     </form>
   );
 };

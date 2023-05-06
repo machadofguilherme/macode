@@ -1,11 +1,16 @@
 import PropTypes from "prop-types"
+import './ButtonStyle.sass';
+
 const Button = ({ text, choose, chooseValue }) => {
   return (
-    <>
-        <button type="button" onClick={() => choose(!chooseValue)}>
+    <main className="button__container">
+        <button
+          type="button"
+          onClick={() => choose(!chooseValue)}
+        >
           { text }
         </button>
-    </>
+    </main>
   )
 }
 
