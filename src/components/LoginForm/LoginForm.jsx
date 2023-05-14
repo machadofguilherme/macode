@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoginSchema from '../../schemas/LoginSchema';
-import dataRequest from '../../utils/fetchApi';
+import { dataRequest } from '../../utils/fetchApi';
 import './LoginFormStyle.sass';
 
 const LoginForm = () => {

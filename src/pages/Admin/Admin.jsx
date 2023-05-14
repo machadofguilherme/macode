@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import FormPost from "../../components/FormPost/FormPost";
 import PostList from "../../components/PostList/PostList";
-import dataRequest from "../../utils/fetchApi";
+import { dataRequest } from "../../utils/fetchApi";
 import './AdminStyle.sass';
 
 const Admin = () => {
@@ -63,7 +63,7 @@ const Admin = () => {
 
       {
         isEdit
-          ? <FormPost />
+          ? <FormPost setIsEdit={setIsEdit} />
           : <PostList />
       }
     </>

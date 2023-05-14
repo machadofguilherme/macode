@@ -4,9 +4,12 @@ const request = axios.create({
   baseURL: import.meta.env.VITE_API_URI,
 });
 
-const dataRequest = async (endpoint, body) => {
-  const { data } = await request.post(endpoint, body);
+export const getPosts = async (endpoint) => {
+  const { data } = await request.get(endpoint);
   return data;
 };
 
-export default dataRequest;
+export const dataRequest = async (endpoint, body) => {
+  const { data } = await request.post(endpoint, body);
+  return data;
+};
