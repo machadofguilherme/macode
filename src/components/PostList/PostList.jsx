@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 import { getPosts } from "../../utils/fetchApi";
 import PostCardList from "../PostCardList/PostCardList";
@@ -11,6 +12,7 @@ let OFFSET = 0;
 const PostList = () => {
   const [content, setContent] = useState([]);
   const [isDisabled, setIsDisabled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const request = async () => {
@@ -34,11 +36,16 @@ const PostList = () => {
     setContent(response.allPosts);
   }
 
+  const showPost = async (post) => {
+    const id = post._id;
+    navigate(`/post/${id}`);
+  }
+
   return (
     <main className="content__container">
       {
         content.map((post, index) => (
-          <section key={index}>
+          <section key={index} onClick={() => showPost(post)}>
             <PostCardList
               title={post?.title}
               description={post?.description}
