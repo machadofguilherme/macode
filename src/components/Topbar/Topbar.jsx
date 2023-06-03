@@ -1,14 +1,23 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 
 import './TopbarStyle.sass';
+import { dataRequest } from '../../utils/fetchApi';
+import AppContext from '../../context/AppContext';
 
 const Topbar = () => {
     const [query, setQuery] = useState('');
+    const { saveDataTag } = useContext(AppContext)
+    const location = useLocation();
 
-    const searchPost = () => {
-        console.log(query);
+    const searchPost = async () => {
+        const body = {
+            tag: query
+        }
+
+        const result = await dataRequest('/tag', body);
+        saveDataTag(result);
     }
     
     const searchPostToPressEnter = (e) => {        
@@ -19,6 +28,11 @@ const Topbar = () => {
         }
     }
 
+    const isDisabled = location
+        .pathname.includes('/post')
+            ? true
+            : false;
+
     return (
         <nav className='topbar'>
             <section>
@@ -27,17 +41,23 @@ const Topbar = () => {
                 </Link>
             </section>
             <form>
-                <input
-                    type='text'
-                    placeholder='react'
-                    value={query}
-                    onChange={({ target }) => setQuery(String(target.value).toLowerCase().trim())}
-                    onKeyDown={searchPostToPressEnter}
-                />
-                
-                <button type='button' onClick={searchPost}>
-                    <BsSearch />
-                </button>
+                {
+                    !isDisabled && (
+                        <>
+                            <input
+                            type='text'
+                            placeholder='react'
+                            value={query}
+                            onChange={({ target }) => setQuery(String(target.value).toLowerCase().trim())}
+                            onKeyDown={searchPostToPressEnter}
+                            disabled={isDisabled}
+                        />
+                            <button type='button' onClick={searchPost}>
+                                <BsSearch />
+                            </button>
+                        </>
+                    )
+                }
             </form>
         </nav>
     )

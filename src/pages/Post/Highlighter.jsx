@@ -19,7 +19,7 @@ const CodeBlock = {
     return !inline && match ? (
       <Codecontainer
         language={match[1]}
-        PreTag="section"
+        pretag="section"
         {...props}
       >
         {children}

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 import { getPosts } from "../../utils/fetchApi";
 import PostCardList from "../PostCardList/PostCardList";
 import PaginateButton from "../PaginateButton/PaginateButton";
 import './PostListStyle.sass';
+import AppContext from "../../context/AppContext";
 
 const LIMIT = 5;
 let OFFSET = 0;
@@ -12,6 +13,7 @@ let OFFSET = 0;
 const PostList = () => {
   const [content, setContent] = useState([]);
   const [isDisabled, setIsDisabled] = useState(false);
+  const { contentTag } = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +30,12 @@ const PostList = () => {
       ? setIsDisabled(true)
       : setIsDisabled(false);
   }, [content]);
+
+  useEffect(() => {
+    if (contentTag.length > 0) {
+      setContent(contentTag);
+    }
+  }, [contentTag]);
 
   const loadData = async () => {
     OFFSET += OFFSET + 5;

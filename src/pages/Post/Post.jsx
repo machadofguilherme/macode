@@ -17,7 +17,7 @@ const Post = () => {
 
     const request = async () => {
       const result = await getPosts(`${endpoint}`);
-      setPost(result);
+      setTimeout(() => setPost(result), 500);
     }
 
     request();
@@ -28,26 +28,38 @@ const Post = () => {
   return (
     <main className="post__container">
       <section>
-        <h1>{post?.title}</h1>
-        <h3>{post?.description}</h3>
-        <ul>
-          {
-            post?.tags.map((tag, index) => (
-              <li key={index}>{tag}</li>
-            ))
-          }
-        </ul>
-        <article>
-          <span><strong>Publicado por: </strong>{post?.author}</span>
-          <span><strong>Criado no dia </strong>{post?.date}</span>
-        </article>
-        <ReactMarkdown
-          className="content"
-          remarkPlugins={[remarkGfm]}
-          components={CodeBlock}
-        >
-          {markdown}
-        </ReactMarkdown>
+      {
+        !markdown 
+          ? (
+            <h1 className="post__loading">
+              Carregando...
+            </h1>
+          )
+          : (
+          <>
+            <h1>{post?.title}</h1>
+            <h3>{post?.description}</h3>
+            <ul>
+              {
+                post?.tags.map((tag, index) => (
+                  <li key={index}>{tag}</li>
+                ))
+              }
+            </ul>
+            <article>
+              <span><strong>Publicado por: </strong>{post?.author}</span>
+              <span><strong>Criado no dia </strong>{post?.date}</span>
+            </article>
+            <ReactMarkdown
+              className="content"
+              remarkPlugins={[remarkGfm]}
+              components={CodeBlock}
+            >
+              {markdown}
+            </ReactMarkdown>
+          </>
+        )
+      }
       </section>
     </main>
   )
