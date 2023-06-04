@@ -30,14 +30,20 @@ const Topbar = () => {
 
     const isDisabled = location
         .pathname.includes('/post')
-            ? true
-            : false;
+            || location.pathname.includes('/author')
+                ? true
+                : false;
 
     return (
         <nav className='topbar'>
             <section>
                 <Link to={'/'}>
                 { '{} macode' }
+                </Link>
+            </section>
+            <section className='author'>
+                <Link to={'/author'}>
+                    O Autor
                 </Link>
             </section>
             <form>

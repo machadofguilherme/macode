@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { getPosts } from "../../utils/fetchApi";
 import PostCardList from "../PostCardList/PostCardList";
 import PaginateButton from "../PaginateButton/PaginateButton";
-import './PostListStyle.sass';
 import AppContext from "../../context/AppContext";
+import './PostListStyle.sass';
 
 const LIMIT = 5;
 let OFFSET = 0;
