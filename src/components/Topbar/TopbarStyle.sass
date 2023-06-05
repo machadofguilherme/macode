@@ -6,17 +6,24 @@
     justify-content: space-around
     align-items: center
 
+    @media (max-width: 425px)
+        height: 50px
+        justify-content: center
+
     a
         font-size: 1.5rem
         font-weight: 500
         color: white
-    
+            
     form
         display: flex
         align-items: center
 
     input, button
         height: 2rem
+    
+        @media (max-width: 425px)
+            display: none
 
     input
         border-top-left-radius: 1.5rem
@@ -48,6 +55,9 @@
     font-size: 1rem
     background: none
     font-weight: 500
+
+    @media (max-width: 425px)
+        display: none
 
     &:hover
         font-weight: 700
