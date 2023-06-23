@@ -14,6 +14,8 @@ const PostList = () => {
   const [content, setContent] = useState([]);
   const [isDisabled, setIsDisabled] = useState(false);
   const { contentTag } = useContext(AppContext);
+  const [on, setOn] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,6 +39,13 @@ const PostList = () => {
     }
   }, [contentTag]);
 
+  useEffect(() => {
+    const isEdit = localStorage.getItem('isEdit');
+    if (isEdit) {
+      setOn(true);
+    }
+  }, []);
+
   const loadData = async () => {
     OFFSET += OFFSET + 5;
     const endpoint = `/post?limit=${LIMIT}&offset=${OFFSET}`;
@@ -53,13 +62,26 @@ const PostList = () => {
     <main className="content__container">
       {
         content.map((post, index) => (
-          <section key={index} onClick={() => showPost(post)}>
-            <PostCardList
-              title={post?.title}
-              description={post?.description}
-              date={post?.date}
-            />
-          </section>
+          <>
+            <section key={index} onClick={() => showPost(post)}>
+              <PostCardList
+                title={post?.title}
+                description={post?.description}
+                date={post?.date}
+              />
+            </section>
+            {
+              on && (
+                <button
+                  onClick={
+                    () =>
+                      navigate(`/admin/edit/${post._id}`)
+                  }>
+                  Editar
+                </button>
+              )
+            }
+          </>
         ))
       }
 

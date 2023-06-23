@@ -12,6 +12,7 @@ const Login = () => {
       
       if (admin) {
         navigate('/admin')
+        localStorage.setItem('isEdit', 'nada');
       } else {
         navigate('/login')
       }

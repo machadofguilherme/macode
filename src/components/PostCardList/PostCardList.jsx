@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import './PostCardListStyle.sass';
 
 const PostCardList = ({ title, description, date }) => {
+
   return (
     <main className="postcard">
       <section>
@@ -17,7 +18,7 @@ const PostCardList = ({ title, description, date }) => {
 PostCardList.propTypes = {
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 }
 
 export default PostCardList

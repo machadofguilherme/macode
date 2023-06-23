@@ -16,6 +16,7 @@
     .social a
         &:hover
             cursor: pointer
+            
 
     section
         display: flex
@@ -26,10 +27,13 @@
         gap: 1rem
 
     h1
-        font-size: 1.2rem
+        font-size: 1.6rem
+        line-height: 0
     
     h2
-        font-weight: 500
+        font-weight: 300
+        font-size: 1.3rem
+        color: #1E5128 !important
     
     p
         font-size: 1rem
@@ -37,5 +41,31 @@
     strong, h1
         color: #1E5128
 
+
 svg
-    font-size: 1.3rem
+    font-size: 1.6rem
+    line-height: 0
+
+.vertical-timeline-element-icon svg
+    fill: white
+
+    @media (max-width: 425px)
+        font-size: .1rem !important
+
+
+.vertical-timeline-element-title h2
+    font-weight: 700 !important
+
+.timeline__container
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    
+    img
+        height: 22rem
+        width: 100%
+        border-radius: 1rem
+
+.author__subtitle
+    text-align: center

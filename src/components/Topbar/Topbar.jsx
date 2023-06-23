@@ -31,6 +31,7 @@ const Topbar = () => {
     const isDisabled = location
         .pathname.includes('/post')
             || location.pathname.includes('/author')
+            || location.pathname.includes('/projects')
                 ? true
                 : false;
 
@@ -41,7 +42,7 @@ const Topbar = () => {
                 { '{} macode' }
                 </Link>
             </section>
-            <section className='author'>
+            <section className='links'>
                 <Link to={'/author'}>
                     O Autor
                 </Link>
