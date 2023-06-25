@@ -4,13 +4,13 @@ import { useState } from "react";
 import AppContext from "./AppContext";
 
 const AppProvider = ({ children }) => {
-  const [contentTag, setContentTag] = useState([]);
-    
+    const [contentTag, setContentTag] = useState([]);
+
     const saveDataTag = (content) => setContentTag(content);
 
     const data = {
       contentTag,
-      saveDataTag,
+      saveDataTag
     }
     
   return (

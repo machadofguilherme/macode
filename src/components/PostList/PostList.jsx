@@ -62,8 +62,8 @@ const PostList = () => {
     <main className="content__container">
       {
         content.map((post, index) => (
-          <>
-            <section key={index} onClick={() => showPost(post)}>
+          <div key={index} >
+            <section onClick={() => showPost(post)}>
               <PostCardList
                 title={post?.title}
                 description={post?.description}
@@ -81,7 +81,7 @@ const PostList = () => {
                 </button>
               )
             }
-          </>
+          </div>
         ))
       }
 

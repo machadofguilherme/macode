@@ -13,3 +13,8 @@ export const dataRequest = async (endpoint, body) => {
   const { data } = await request.post(endpoint, body);
   return data;
 };
+
+export const dataUpdate = async (endpoint, body) => {
+  const { data } = await request.patch(endpoint, body);
+  return data;
+};

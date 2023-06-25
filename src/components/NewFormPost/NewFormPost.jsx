@@ -8,6 +8,9 @@ const NewFormPost = ({
   button,
   postTitle,
   postDescription,
+  titleElement,
+  description,
+  content,
   setTitleElement,
   setDescription,
   setContent,
@@ -29,6 +32,7 @@ const NewFormPost = ({
             placeholder={postTitle}
             id="input__form__post-title"
             state={setTitleElement}
+            value={titleElement}
           />
         </label>
 
@@ -38,6 +42,7 @@ const NewFormPost = ({
             placeholder={postDescription}
             id="input__form__post-description"
             state={setDescription}
+            value={description}
           />
         </label>
 
@@ -71,7 +76,8 @@ const NewFormPost = ({
             autoComplete="off"
             id="input__form__post-content"
             placeholder="Digite aqui o seu texto"
-            onChange={({target}) => setContent(target.value)}
+            onChange={({ target }) => setContent(target.value)}
+            value={content}
           />
         </label>
 
@@ -87,6 +93,9 @@ const NewFormPost = ({
 NewFormPost.propTypes = {
   button: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  titleElement: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   postTitle: PropTypes.string.isRequired,
   postDescription: PropTypes.string.isRequired,
   setTitleElement: PropTypes.func.isRequired,

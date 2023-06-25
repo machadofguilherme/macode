@@ -31,7 +31,6 @@ const Topbar = () => {
     const isDisabled = location
         .pathname.includes('/post')
             || location.pathname.includes('/author')
-            || location.pathname.includes('/projects')
                 ? true
                 : false;
 
@@ -52,12 +51,15 @@ const Topbar = () => {
                     !isDisabled && (
                         <>
                             <input
-                            type='text'
-                            placeholder='react'
-                            value={query}
-                            onChange={({ target }) => setQuery(String(target.value).toLowerCase().trim())}
-                            onKeyDown={searchPostToPressEnter}
-                            disabled={isDisabled}
+                                type='text'
+                                placeholder='react'
+                                value={query}
+                                onChange={
+                                    ({ target }) => setQuery(String(target.value)
+                                        .toLowerCase().trim())
+                                }
+                                onKeyDown={searchPostToPressEnter}
+                                disabled={isDisabled}
                         />
                             <button type='button' onClick={searchPost}>
                                 <BsSearch />

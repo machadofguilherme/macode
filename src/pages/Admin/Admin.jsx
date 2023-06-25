@@ -10,7 +10,6 @@ const Admin = () => {
   const navigate = useNavigate();
   const [isLogout, setIsLogout] = useState(false);
 
-
   useEffect(() => {
     const admin = JSON
     .parse(localStorage.getItem('admin'));
@@ -41,6 +40,8 @@ const Admin = () => {
     }
   }, [isLogout, navigate]);
 
+  const handleChoose = (bool) => setIsLogout(bool);
+  
   return (
     <>
       <section
@@ -52,7 +53,7 @@ const Admin = () => {
 
         <Button
           text='Sair'
-          choose={ setIsLogout }
+          choose={ handleChoose }
           chooseValue={ isLogout }
         />
       </section>

@@ -15,9 +15,9 @@ const Button = ({ text, choose, chooseValue }) => {
 }
 
 Button.propTypes = {
-  choose: PropTypes.func,
-  chooseValue: PropTypes.bool,
-  text: PropTypes.string
+  choose: PropTypes.func.isRequired,
+  chooseValue: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired
 }
 
-export default Button
+export default Button;

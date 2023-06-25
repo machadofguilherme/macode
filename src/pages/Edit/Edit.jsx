@@ -1,9 +1,8 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import NewFormPost from "../../components/NewFormPost/NewFormPost"
-import { dataRequest } from "../../utils/fetchApi";
-import AppContext from "../../context/AppContext";
+import { dataUpdate, getPosts } from "../../utils/fetchApi";
 
 const Edit = () => {
   const [titleElement, setTitleElement] = useState('');
@@ -13,15 +12,25 @@ const Edit = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const route = location.pathname;
+    const id = location.pathname.substring(12);
+    
+    const request = async () => {
+      const data = await getPosts(`/post/${id}`);
+      setTitleElement(data.title);
+      setDescription(data.description);
+      setTags(data.tags);
+      setContent(data.content);
+    }
+
+    request();
   }, [location.pathname]);
 
-  const { setIsEdit } = useContext(AppContext);
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const atualDate = new Date();
+    const id = location.pathname.substring(12);
     const date = new Intl
       .DateTimeFormat('pt-BR', {timeZone: 'UTC'})
       .format(atualDate);
@@ -35,8 +44,7 @@ const Edit = () => {
       content,
     }
 
-    const result = await dataRequest('/post', formattedContent);
-    result && setIsEdit(false);
+    await dataUpdate(`/post/${id}`, formattedContent);
     navigate('/admin');
   }
 
@@ -57,6 +65,9 @@ const Edit = () => {
   return (
     <NewFormPost
       title="Altere o seu post!"
+      titleElement={titleElement}
+      description={description}
+      content={content}
       setTitleElement={setTitleElement}
       setDescription={setDescription}
       setContent={setContent}
