@@ -9,6 +9,7 @@ import Post from './pages/Post/Post';
 import Author from './pages/Author/Author';
 import Create from './pages/Create/Create';
 import Edit from './pages/Edit/Edit';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }

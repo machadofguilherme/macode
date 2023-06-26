@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { getPosts } from "../../utils/fetchApi";
 import PostCardList from "../PostCardList/PostCardList";
@@ -45,7 +45,7 @@ const PostList = () => {
       setOn(true);
     }
   }, []);
-
+  
   const loadData = async () => {
     OFFSET += OFFSET + 5;
     const endpoint = `/post?limit=${LIMIT}&offset=${OFFSET}`;
@@ -57,6 +57,8 @@ const PostList = () => {
     const id = post._id;
     navigate(`/post/${id}`);
   }
+  
+  const isFilter = localStorage.getItem('filter');
 
   return (
     <main className="content__container">
@@ -85,11 +87,21 @@ const PostList = () => {
         ))
       }
 
-      <PaginateButton
-        text="Ver mais"
-        loadData={loadData}
-        isDisabled={isDisabled}
-      />
+      <section className="mobile__button">
+        <Link to={'/author'}>
+          conheça o autor
+        </Link>
+      </section>
+
+      {
+        !isFilter && (
+          <PaginateButton
+            text="Ver mais"
+            loadData={loadData}
+            isDisabled={isDisabled}
+          />
+        )
+      }
     </main>
   )
 }

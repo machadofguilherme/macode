@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
+import renderNavigation from "../../utils/renderNavigation";
 import { getPosts } from "../../utils/fetchApi";
 import CodeBlock from './Highlighter'
-
 import './PostStyle.sass';
 
 const Post = () => {
@@ -22,6 +22,8 @@ const Post = () => {
 
     request();
   }, [location.pathname]);
+
+  useEffect(() => renderNavigation(), []);
 
   const markdown = post?.content;
 

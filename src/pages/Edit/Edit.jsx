@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import NewFormPost from "../../components/NewFormPost/NewFormPost"
 import { dataUpdate, getPosts } from "../../utils/fetchApi";
+import FormPost from "../../components/FormPost/FormPost";
 
 const Edit = () => {
   const [titleElement, setTitleElement] = useState('');
@@ -63,7 +63,7 @@ const Edit = () => {
   }
 
   return (
-    <NewFormPost
+    <FormPost
       title="Altere o seu post!"
       titleElement={titleElement}
       description={description}

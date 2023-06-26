@@ -1,9 +1,8 @@
-import { useState, useContext } from "react";
-
-import NewFormPost from "../../components/NewFormPost/NewFormPost"
-import { dataRequest } from "../../utils/fetchApi";
-import AppContext from "../../context/AppContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { dataRequest } from "../../utils/fetchApi";
+import FormPost from "../../components/FormPost/FormPost";
 
 const Create = () => {
   const [titleElement, setTitleElement] = useState('');
@@ -11,7 +10,6 @@ const Create = () => {
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState(``);
 
-  const { setIsEdit } = useContext(AppContext);
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -30,8 +28,7 @@ const Create = () => {
       content,
     }
 
-    const result = await dataRequest('/post', formattedContent);
-    result && setIsEdit(false);
+    await dataRequest('/post', formattedContent);
     navigate('/admin');
   }
 
@@ -50,7 +47,7 @@ const Create = () => {
   }
 
   return (
-    <NewFormPost
+    <FormPost
       title="Crie o seu post aqui!"
       setTitleElement={setTitleElement}
       setDescription={setDescription}

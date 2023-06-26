@@ -12,12 +12,15 @@
     .social
         display: flex
         flex-direction: row
+        gap: 10px
 
     .social a
         &:hover
             cursor: pointer
-            
 
+    .social svg
+        font-size: 1.30rem
+            
     section
         display: flex
         flex-direction: column
@@ -28,30 +31,30 @@
 
     h1
         font-size: 1.6rem
+        font-weight: 600
         line-height: 0
     
     h2
         font-weight: 300
-        font-size: 1.3rem
+        font-size: 1.1rem
         color: #1E5128 !important
     
     p
-        font-size: 1rem
+        font-size: 1.2rem
+        font-weight: 300
+        line-height: 1
 
     strong, h1
         color: #1E5128
 
-
 svg
     font-size: 1.6rem
-    line-height: 0
 
 .vertical-timeline-element-icon svg
     fill: white
 
     @media (max-width: 425px)
         font-size: .1rem !important
-
 
 .vertical-timeline-element-title h2
     font-weight: 700 !important

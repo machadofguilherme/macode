@@ -17,9 +17,9 @@ const Author = () => {
     return (
         <main className="author__container">
             <section>
-                <h1>Guilherme Machado</h1>
+                <h1>{'{ Guilherme Machado }' }</h1>
                 <p className='author__subtitle'>
-                    Desenvolvedor Front-End
+                    Desenvolvedor Fullstack
                 </p>
             </section>
             <section className='social'>

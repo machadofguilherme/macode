@@ -5,6 +5,7 @@ import { BsSearch } from 'react-icons/bs';
 import './TopbarStyle.sass';
 import { dataRequest } from '../../utils/fetchApi';
 import AppContext from '../../context/AppContext';
+import renderNavigation from '../../utils/renderNavigation';
 
 const Topbar = () => {
     const [query, setQuery] = useState('');
@@ -16,6 +17,7 @@ const Topbar = () => {
             tag: query
         }
 
+        localStorage.setItem('filter', 'nada');
         const result = await dataRequest('/tag', body);
         saveDataTag(result);
     }
@@ -37,12 +39,12 @@ const Topbar = () => {
     return (
         <nav className='topbar'>
             <section>
-                <Link to={'/'}>
+                <a href="/" onClick={() => renderNavigation()}>
                 { '{} macode' }
-                </Link>
+                </a>
             </section>
             <section className='links'>
-                <Link to={'/author'}>
+                <Link to={'/author'} onClick={() => renderNavigation()}>
                     O Autor
                 </Link>
             </section>
