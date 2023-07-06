@@ -1,17 +1,17 @@
-import { BarLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 const Loading = () => {
   return (
     <section
-      className="flex flex-col justify-center items-center w-screen h-screen max-sm:w-full"
+      className="flex flex-col justify-center items-center w-full min-h-screen"
     >
-      <BarLoader
+      <ClockLoader
         color="#1E5128"
-        size={50}
+        size={80}
       />
       
       <h1
-        className="text-xl font-semibold text-lime-950 lowercase"
+        className="text-xl font-medium text-lime-950 lowercase pb-40"
       >
         Carregando...
       </h1>

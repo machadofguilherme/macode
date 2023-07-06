@@ -68,7 +68,7 @@ const PostList = () => {
           ? ( <Loading /> )
           : (
             <main
-              className="flex flex-col w-screen h-screen items-center justify-start mt-10 gap-12 max-sm:gap-10 max-sm:h-screen max-sm:mb-16"
+              className="flex flex-col w-screen min-h-screen items-center justify-start mt-10 gap-12 max-sm:gap-10 max-sm:mb-16"
             > 
               {
                 content.map((post, index) => (

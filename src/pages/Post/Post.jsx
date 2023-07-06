@@ -29,7 +29,7 @@ const Post = () => {
 
   return (
     <main
-      className="w-screen h-full flex flex-col justify-start items-center mb-6 max-sm:h-full m-auto"
+      className="w-screen min-h-screen flex flex-col justify-start items-center mb-6"
     >
       <section className="mt-10 w-96 max-sm:w-3/4">
       {
@@ -84,7 +84,7 @@ const Post = () => {
             </article>
 
             <ReactMarkdown
-              className="text-sm indent-4 w-96 text-justify max-sm:w-5/6 max-sm:block max-sm:m-auto"
+              className="text-sm indent-4 w-full text-justify max-sm:w-4/5 max-sm:block max-sm:m-auto max-sm:overflow-x-hidden"
               remarkPlugins={[remarkGfm]}
               components={CodeBlock}
             >

@@ -78,7 +78,7 @@ const Topbar = () => {
 
         <section className="sm:hidden">
           <Link to={'/author'} className='text-sm font-light text-stone-50 hover:underline'>
-            Conheça o autor
+            O Autor
           </Link>
         </section>
       </nav>
