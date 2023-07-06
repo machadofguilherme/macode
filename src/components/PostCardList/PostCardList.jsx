@@ -1,24 +1,37 @@
 import PropTypes from "prop-types"
 
-import './PostCardListStyle.sass';
-
 const PostCardList = ({ title, description, date }) => {
-
   return (
-    <main className="postcard">
+    <main
+      className="flex items-start flex-col gap-2 w-72 max-sm:ml-2 max-sm:lr-2 max-sm:w-52 cursor-pointer"
+    >
       <section>
-          <h1>{title}</h1>
-          <h3>{description}</h3>
+        <h1
+          className="text-lime-950 font-semibold text-lg text-left"
+        >
+          {title.length <= 25 ? title : title.substring(0, 25) + '...'}
+        </h1>
+
+        <h3
+          className="font-light text-xs"
+        >
+          {description.length <= 25 ? description : description.substring(0, 25) + '...'}
+        </h3>
       </section>
-      <span>{date}</span>
+
+      <span
+        className="bg-lime-500 pt-1 pb-1 pr-1 pl-1 text-black rounded-md"
+      >
+        {date}
+      </span>
     </main>
-  )
-}
+  );
+};
 
 PostCardList.propTypes = {
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-}
+};
 
-export default PostCardList
+export default PostCardList;

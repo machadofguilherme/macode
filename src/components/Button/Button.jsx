@@ -1,12 +1,12 @@
 import PropTypes from "prop-types"
-import './ButtonStyle.sass';
 
 const Button = ({ text, choose, chooseValue }) => {
   return (
-    <main className="button__container">
+    <main>
         <button
           type="button"
           onClick={() => choose(!chooseValue)}
+          className="bg-lime-950 block w-24 h-7 rounded-md text-stone-50 text-md font-semibold transition-colors hover:bg-black lowercase"
         >
           { text }
         </button>

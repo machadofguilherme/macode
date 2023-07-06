@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FiEdit } from 'react-icons/fi';
 
 import { getPosts } from "../../utils/fetchApi";
 import PostCardList from "../PostCardList/PostCardList";
 import PaginateButton from "../PaginateButton/PaginateButton";
 import AppContext from "../../context/AppContext";
-import './PostListStyle.sass';
+import Loading from "../Loading/Loading";
 
 const LIMIT = 5;
 let OFFSET = 0;
@@ -28,7 +29,7 @@ const PostList = () => {
   }, []);
 
   useEffect(() => {
-    content.length < 5
+    content.length < OFFSET
       ? setIsDisabled(true)
       : setIsDisabled(false);
   }, [content]);
@@ -61,49 +62,57 @@ const PostList = () => {
   const isFilter = localStorage.getItem('filter');
 
   return (
-    <main className="content__container">
+    <>
       {
-        content.map((post, index) => (
-          <div key={index} >
-            <section onClick={() => showPost(post)}>
-              <PostCardList
-                title={post?.title}
-                description={post?.description}
-                date={post?.date}
-              />
-            </section>
-            {
-              on && (
-                <button
-                  onClick={
-                    () =>
-                      navigate(`/admin/edit/${post._id}`)
-                  }>
-                  Editar
-                </button>
-              )
-            }
-          </div>
-        ))
-      }
+        content.length === 0
+          ? ( <Loading /> )
+          : (
+            <main
+              className="flex flex-col w-screen h-screen items-center justify-start mt-10 gap-12 max-sm:gap-10 max-sm:h-screen max-sm:mb-16"
+            > 
+              {
+                content.map((post, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <section
+                      onClick={() => showPost(post)}
+                      className=""
+                    >
+                      <PostCardList
+                        title={post?.title}
+                        description={post?.description}
+                        date={post?.date}
+                      />
+                    </section>
+                    {
+                      on && (
+                        <button
+                          className="text-xl"
+                          onClick={
+                            () =>
+                              navigate(`/admin/edit/${post._id}`)
+                          }>
+                          <FiEdit />
+                        </button>
+                      )
+                    }
+                  </div>
+                ))
+              }
 
-      <section className="mobile__button">
-        <Link to={'/author'}>
-          conheça o autor
-        </Link>
-      </section>
-
-      {
-        !isFilter && (
-          <PaginateButton
-            text="Ver mais"
-            loadData={loadData}
-            isDisabled={isDisabled}
-          />
-        )
+              {
+                !isFilter && (
+                  <PaginateButton
+                    text="Ver mais"
+                    loadData={loadData}
+                    isDisabled={isDisabled}
+                  />
+                )
+              }
+            </main>
+          )
       }
-    </main>
+    </>
   )
 }
 
-export default PostList
+export default PostList;

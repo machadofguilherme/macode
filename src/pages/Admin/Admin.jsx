@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import PostList from "../../components/PostList/PostList";
 import { dataRequest } from "../../utils/fetchApi";
-import './AdminStyle.sass';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -44,9 +43,7 @@ const Admin = () => {
   
   return (
     <>
-      <section
-        className="header__admin-container"
-      >
+      <section className="flex justify-evenly mt-6">
         <Link to="/admin/create">
           <Button text='Nova postagem' />
         </Link>
@@ -63,4 +60,4 @@ const Admin = () => {
   )
 }
 
-export default Admin
+export default Admin;

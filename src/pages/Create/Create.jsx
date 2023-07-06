@@ -9,6 +9,7 @@ const Create = () => {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState(``);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -36,7 +37,13 @@ const Create = () => {
     if (e.key == 'Enter') {
       e.preventDefault();
       const value = String(e.target.value).trim().toLowerCase();
-      setTags([...tags, value]);
+      
+      if (!value) {
+        setErrorMessage('fill in the field and try again');
+      } else {
+        setTags([...tags, value]);
+      }
+
       e.target.value = '';
     }
   }
@@ -59,8 +66,9 @@ const Create = () => {
       addTagToList={addTagToList}
       removeTag={removeTag}
       tags={tags}
+      errorMessage={errorMessage}
     />
   )
 }
 
-export default Create
+export default Create;

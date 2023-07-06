@@ -9,6 +9,7 @@ const Edit = () => {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState(``);
+  const [errorMessage, setErrorMessage] = useState('');
   const location = useLocation();
 
   useEffect(() => {
@@ -52,7 +53,13 @@ const Edit = () => {
     if (e.key == 'Enter') {
       e.preventDefault();
       const value = String(e.target.value).trim().toLowerCase();
-      setTags([...tags, value]);
+
+      if (!value) {
+        setErrorMessage('fill in the field and try again');
+      } else {
+        setTags([...tags, value]);
+      }
+
       e.target.value = '';
     }
   }
@@ -78,8 +85,9 @@ const Edit = () => {
       addTagToList={addTagToList}
       removeTag={removeTag}
       tags={tags}
+      errorMessage={errorMessage}
     />
   )
 }
 
-export default Edit
+export default Edit;

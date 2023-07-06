@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+html::-webkit-scrollbar {
+    width: 7px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #000000;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #1a2e05;
+}
+
+body {
+    font-size: 62.5%;
+    background-color: #fafaf9;
+    overflow-x: hidden;
+}
+
+input, button {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img[alt=Imagem] {
+    width: 250px;
+    height: 90px;
+    border-radius: 6px;
+    display: block;
+    margin: 10px auto;
+}

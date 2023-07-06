@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoginSchema from '../../schemas/LoginSchema';
 import { dataRequest } from '../../utils/fetchApi';
-import './LoginFormStyle.sass';
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -32,20 +31,38 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='form__container'
+      className='w-screen h-eighty-six flex justify-center items-center'
     >
-      <div>
+      <div className='flex flex-col justify-center items-center gap-4'>
         <section>
-          <input type='email' placeholder="E-Mail" {...register('email')} />
-          <p>{errors.email?.message}</p>
+          <input
+            type='email'
+            placeholder="E-Mail" {...register('email')}
+            className='p-2 bg-lime-500 placeholder:text-black text-black rounded-md font-medium focus:ring-black focus:border focus:border-black focus:border-solid'
+          />
+
+          <p className='text-red-700 font-semibold text-center'>
+            {errors.email?.message}
+          </p>
         </section>
 
         <section>
-          <input type='password' placeholder="Senha" {...register('password')} />
-          <p>{errors.password?.message}</p>
+          <input
+            type='password'
+            placeholder="Senha" {...register('password')}
+            className='p-2 bg-lime-500 placeholder:text-black text-black rounded-md font-medium focus:ring-black focus:border focus:border-black focus:border-solid'
+          />
+
+          <p className='text-red-700 font-semibold text-center'>
+            {errors.password?.message}
+          </p>
         </section>
 
-        <button type="submit">Entrar</button>
+        <button
+          type="submit"
+          className='block w-full bg-lime-950 h-8 rounded-md text-lg font-semibold text-stone-50 transition-colors hover:bg-black'>
+          Entrar
+        </button>
       </div>
     </form>
   );

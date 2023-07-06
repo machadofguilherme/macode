@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 
-import './PaginateButtonStyle.sass';
-
 const PaginateButton = (
     { text, loadData, isDisabled }
 ) => {
@@ -11,7 +9,7 @@ const PaginateButton = (
             type="button"
             onClick={loadData}
             disabled={isDisabled}
-            className="paginate"
+            className="pt-1 pb-1 pr-5 pl-5 bg-lime-950 font-medium text-lg text-stone-50  lowercase rounded-md transition-colors hover:bg-black disabled:opacity-75 disabled:hover:bg-lime-950 hover:cursor-pointer disabled:hover:cursor-not-allowed"
         >
             {text}
         </button>
