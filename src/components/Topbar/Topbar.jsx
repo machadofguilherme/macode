@@ -5,6 +5,7 @@ import { BsSearch } from 'react-icons/bs';
 import { dataRequest } from '../../utils/fetchApi';
 import AppContext from '../../context/AppContext';
 import renderNavigation from '../../utils/renderNavigation';
+import DarkMode from '../DarkMode/DarkMode';
 
 const Topbar = () => {
     const [query, setQuery] = useState('');
@@ -36,15 +37,27 @@ const Topbar = () => {
                 : false;
 
     return (
-      <nav className="w-screen flex bg-lime-950 h-12 justify-evenly items-center">
-        <section className="text-stone-50 font-bold text-xl">
-          <a href="/" onClick={() => renderNavigation()}>
+      <nav
+        className="w-screen flex bg-lime-950 h-12 justify-evenly items-center"
+      >
+        <section className="font-bold text-xl text-stone-50 hover:text-stone-50">
+          <Link
+            to='/'
+            className='hover:text-stone-50 hover:no-underline text-stone-50 dark:text-stone-50 active:text-stone-50 enabled:text-stone-50 underline-none'
+            onClick={() => renderNavigation()}
+          >
             {"{} macode"}
-          </a>
+          </Link>
         </section>
         
-        <section className="text-stone-50 font-normal text-base pt-0.5 max-sm:hidden">
-          <Link to={"/author"} onClick={() => renderNavigation()}>
+        <section
+          className="text-base pt-0.5 max-sm:hidden"
+        >
+          <Link
+            to={"/author"}
+            onClick={() => renderNavigation()}
+            className='no-underline dark:no-underline hover:text-stone-50 hover:no-underline text-stone-50 dark:text-stone-50 max-sm:dark:no-underline max-sm:dark:text-stone-50'
+          >
             O Autor
           </Link>
         </section>
@@ -62,7 +75,7 @@ const Topbar = () => {
                 }
                 onKeyDown={searchPostToPressEnter}
                 disabled={isDisabled}
-                className="h-6 indent-1.5 rounded-t-md rounded-tr-none rounded-b-md rounded-br-none placeholder:text-black placeholder:text-sm text-sm lowercase w-36"
+                className="h-6 indent-1.5 rounded-t-md rounded-tr-none rounded-b-md rounded-br-none placeholder:text-black placeholder:text-sm text-sm lowercase w-full"
               />
 
               <button
@@ -81,6 +94,8 @@ const Topbar = () => {
             O Autor
           </Link>
         </section>
+
+        <DarkMode />
       </nav>
     );
 };

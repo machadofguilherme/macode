@@ -44,7 +44,7 @@ const Admin = () => {
   return (
     <>
       <section className="flex justify-evenly mt-6">
-        <Link to="/admin/create">
+        <Link to="/admin/create" className='dark:no-underline hover:no-underline'>
           <Button text='Nova postagem' />
         </Link>
 

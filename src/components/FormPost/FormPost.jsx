@@ -24,15 +24,15 @@ const FormPost = ({
   return (
     <>
       <main
-        className="w-screen h-eighty-six flex flex-col justify-start pt-12  items-center gap-4 mb-8 max-sm:mb-28"
+        className="w-screen h-eighty-six flex flex-col justify-start pt-12  items-center gap-4 mb-24 max-sm:mb-20 overflow-x-hidden"
       >
-        <h1 className="text-2xl font-bold text-lime-950">
+        <h1 className="text-2xl font-bold text-lime-950 dark:text-lime-500 max-sm:dark:text-lime-500">
           {title}
         </h1>
 
         <form onSubmit={submitHandler} className="flex flex-col gap-6 w-4/12 max-sm:w-4/5">
           <label htmlFor="input__form__post-title" className="flex flex-col">
-            <span className="text-md font-semibold text-lime-950 lowercase">
+            <span className="text-md font-semibold text-lime-950 lowercase dark:text-stone-50 max-sm:dark:text-stone-50">
               Título:
             </span>
             <InputFormPost
@@ -44,7 +44,7 @@ const FormPost = ({
           </label>
 
           <label htmlFor="input__form__post-description" className="flex flex-col">
-            <span className="text-md font-semibold text-lime-950 lowercase">
+            <span className="text-md font-semibold text-lime-950 lowercase dark:text-stone-50 max-sm:dark:text-stone-50">
               Descrição:
             </span>
             <InputFormPost
@@ -56,7 +56,7 @@ const FormPost = ({
           </label>
 
           <label htmlFor="input__form__post-tags" className="flex flex-col">
-            <span className="text-md font-semibold text-lime-950 lowercase">
+            <span className="text-md font-semibold text-lime-950 lowercase dark:text-stone-50 max-sm:dark:text-stone-50">
               Tags:
             </span>
             <input
@@ -96,7 +96,7 @@ const FormPost = ({
           </section>
 
           <label htmlFor="input__form__post-content" className="flex flex-col">
-              <span className="text-md font-semibold text-lime-950 lowercase">
+              <span className="text-md font-semibold text-lime-950 lowercase dark:text-stone-50 max-sm:dark:text-stone-50">
                 Conteúdo:
               </span>
 
@@ -112,7 +112,7 @@ const FormPost = ({
 
           <button
             type="submit"
-            className="w-full h-10 text-lg font-semibold bg-lime-950 text-stone-50 rounded-md transition-colors hover:bg-black"
+            className="w-full h-10 text-lg font-semibold bg-lime-950 text-stone-50 rounded-md transition-colors hover:bg-black dark:bg-lime-500 max-sm:dark:bg-lime-500 dark:hover:bg-black max-sm:dark:hover:bg-black"
           >
             {button}
           </button>
