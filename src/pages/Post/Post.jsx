@@ -29,7 +29,7 @@ const Post = () => {
 
   return (
     <main
-      className="w-screen min-h-screen flex flex-col justify-start items-center mb-6"
+      className="w-screen min-h-screen flex flex-col justify-start items-center mb-20"
     >
       <section className="mt-10 w-96 max-sm:w-3/4">
       {
@@ -38,12 +38,12 @@ const Post = () => {
           : (
           <>
                 <h1
-                  className="text-2xl font-semibold text-lime-950 max-sm:text-center w-2/2 max-sm:text-lg max-sm:w-4/4 max-sm:font-bold"
+                  className="text-2xl font-semibold text-lime-950 max-sm:text-center w-2/2 max-sm:text-lg max-sm:w-4/4 max-sm:font-bold dark:text-lime-500"
                 >
                   {post?.title}
                 </h1>
                 <h3
-                  className="text-sm w-3/4 mt-2 max-sm:text-center max-sm:w-4/4 max-sm:block max-sm:m-auto"
+                  className="text-sm w-3/4 mt-2 max-sm:text-center max-sm:w-4/4 max-sm:block max-sm:m-auto dark:text-stone-50"
                 >
                   {post?.description}
                 </h3>
@@ -53,7 +53,7 @@ const Post = () => {
                 post?.tags.map((tag, index) => (
                   <li
                     key={index}
-                    className="bg-lime-500 p-1 rounded-md font-medium"
+                    className="bg-lime-500 p-1 rounded-md font-medium dark:bg-lime-950 dark:text-stone-50"
                   >
                       {tag}
                   </li>
@@ -62,9 +62,9 @@ const Post = () => {
             </ul>
                 
             <article className="flex flex-col mb-8 max-sm:items-center">
-              <span className="text-xs">
+              <span className="text-xs dark:text-stone-50">
                 <strong
-                  className="text-xs text-lime-950 pr-1"
+                  className="text-xs text-lime-950 pr-1 dark:text-lime-500"
                 >
                   Publicado por: 
                 </strong>
@@ -72,9 +72,9 @@ const Post = () => {
                 {post?.author}
               </span>
 
-              <span className="text-xs">
+              <span className="text-xs dark:text-stone-50">
                 <strong
-                  className="text-xs text-lime-950 pr-1"
+                  className="text-xs text-lime-950 pr-1 dark:text-lime-500"
                 >
                   Criado no dia
                 </strong>
@@ -84,7 +84,7 @@ const Post = () => {
             </article>
 
             <ReactMarkdown
-              className="text-sm indent-4 w-full text-justify max-sm:w-4/5 max-sm:block max-sm:m-auto max-sm:overflow-x-hidden"
+              className="text-sm indent-4 w-full text-justify max-sm:w-4/5 max-sm:block max-sm:m-auto max-sm:overflow-x-hidden dark:prose-p:text-stone-50"
               remarkPlugins={[remarkGfm]}
               components={CodeBlock}
             >

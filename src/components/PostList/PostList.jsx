@@ -29,6 +29,14 @@ const PostList = () => {
   }, []);
 
   useEffect(() => {
+    const dark = localStorage.getItem('dark');
+
+    if (!dark) {
+      localStorage.setItem('dark', 'inactive');
+    }
+  }, []);
+
+  useEffect(() => {
     content.length < OFFSET
       ? setIsDisabled(true)
       : setIsDisabled(false);
@@ -68,14 +76,13 @@ const PostList = () => {
           ? ( <Loading /> )
           : (
             <main
-              className="flex flex-col w-screen min-h-screen items-center justify-start mt-10 gap-12 max-sm:gap-10 max-sm:mb-16"
+              className="flex flex-col w-screen min-h-screen items-center justify-start mt-10 gap-12 max-sm:gap-10 max-sm:mb-16 mb-20"
             > 
               {
                 content.map((post, index) => (
                   <div key={index} className="flex items-center gap-4">
                     <section
                       onClick={() => showPost(post)}
-                      className=""
                     >
                       <PostCardList
                         title={post?.title}
@@ -91,7 +98,7 @@ const PostList = () => {
                             () =>
                               navigate(`/admin/edit/${post._id}`)
                           }>
-                          <FiEdit />
+                          <FiEdit className="dark:fill-stone-50" />
                         </button>
                       )
                     }

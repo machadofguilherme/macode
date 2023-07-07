@@ -60,7 +60,7 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          className='block w-full bg-lime-950 h-8 rounded-md text-lg font-semibold text-stone-50 transition-colors hover:bg-black'>
+          className='block w-full bg-lime-950 h-8 rounded-md text-lg font-semibold text-stone-50 transition-colors hover:bg-black dark:bg-lime-500 dark:text-black dark:hover:bg-stone-50'>
           Entrar
         </button>
       </div>

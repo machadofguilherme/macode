@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "rsuite/dist/rsuite.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -31,10 +33,6 @@ body {
 input, button {
     outline: none;
     border: none;
-}
-
-a {
-    text-decoration: none;
 }
 
 img[alt=Imagem] {
